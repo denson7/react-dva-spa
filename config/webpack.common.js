@@ -2,7 +2,7 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const {CleanWebpackPlugin} = require('clean-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
-const HardSourceWebpackPlugin = require('hard-source-webpack-plugin');
+// const HardSourceWebpackPlugin = require('hard-source-webpack-plugin');
 const HappyPack = require('happypack');
 const os = require('os');
 
@@ -133,7 +133,7 @@ module.exports = {
       verbose: true
     }),
     // 加快构建速度
-    new HardSourceWebpackPlugin(),
+    // new HardSourceWebpackPlugin(),
     new webpack.ContextReplacementPlugin(/moment[/\\]locale$/, /zh-cn/),
     new CleanWebpackPlugin()
   ],
