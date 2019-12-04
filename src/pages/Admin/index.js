@@ -11,9 +11,21 @@ import Home from '../Home';
 import User from '../User';
 import Role from '../Role';
 import Category from '../Category';
-import Product from '../Product';
-import Charts from '../Charts';
-import Test from '../Test';
+// import Product from '../Product';
+// import Charts from '../Charts';
+// 路由懒加载
+const Product = React.lazy(() => import('../Product'));
+const Charts = React.lazy(() => import('../Charts'));
+// const Test = React.lazy(() => import('../Test'));
+
+// 模拟路由加载延迟的效果
+const Test = React.lazy(async () => {
+  return await new Promise(resolve => {
+    setTimeout(()=>{
+      resolve(import("../Test/"));
+    }, 2000);
+  });
+});
 
 const {Footer, Sider, Content } = Layout;
 
@@ -43,17 +55,20 @@ class Index extends Component {
         <Layout>
           <Header path={path} />
           <Content style={{margin: 25}}>
-            <Switch>
-              <Route path="/home" component={Home} />
-              <Route path="/user" component={User} />
-              <Route path="/category" component={Category} />
-              <Route path="/product" component={Product} />
-              <Route path="/role" component={Role} />
-              <Route path="/user" component={User} />
-              <Route path="/test" component={Test} />
-              <Route path="/charts" component={Charts} />
-              <Redirect to="/home" />
-            </Switch>
+            {/* fallback 是路由跳转的回调，loading的过程会显示 */}
+            <React.Suspense fallback={<div>拼命加载中...</div>}>
+              <Switch>
+                <Route path="/home" component={Home} />
+                <Route path="/user" component={User} />
+                <Route path="/category" component={Category} />
+                <Route path="/product" component={Product} />
+                <Route path="/role" component={Role} />
+                <Route path="/user" component={User} />
+                <Route path="/test" component={Test} />
+                <Route path="/charts" component={Charts} />
+                <Redirect to="/home" />
+              </Switch>
+            </React.Suspense>
           </Content>
           <Footer style={{textAlign: 'center', color: '#aaaaaa'}}>
             xxxx

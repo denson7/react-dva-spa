@@ -15,6 +15,7 @@ module.exports = smp.wrap(merge(baseConfig, {
     contentBase: path.join(__dirname, "../dist"),
     progress: true,
     compress: true,
+    open: true,
     port: 5000,
     proxy: {
       "/api": {
