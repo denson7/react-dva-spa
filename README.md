@@ -1,5 +1,11 @@
-[TOC]
-##  React dva SPP
+##  React dva SPA
+### 功能概述
+- 权限管理
+- 动态加载路由
+- 按需加载Echarts组件
+- 按需加载antd组件
+- 登陆页
+- 集成dva数据模式
 ### 目录结构
 ```
 ├── assets                   # 静态资源文件
