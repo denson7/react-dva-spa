@@ -67,4 +67,8 @@ $ npm run eslint
 $ npm run fix
 # 项目打包
 $ npm run build
+
+# 自定义mock接口数据返回
+$ cd mock && node index.js
+// 例如：访问localhost:3100/api/list获取数据
 ```
